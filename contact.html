@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — Ye Old Tavernkeeper</title>
+<meta name="description" content="Get in touch or request a new RPG tool.">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <img class="header-run" src="images/running-cropped.png" alt="An adventuring party running">
+  <div class="wrap header-inner">
+    <a href="/" class="brand">
+      <img class="brand-icon" src="images/tk-logo-cropped.png" alt="Ye Old Tavernkeeper logo">
+      <span class="brand-text">Ye Old Tavernkeeper</span>
+    </a>
+    <nav class="site-nav">
+      <a href="/#tools">Tools</a>
+      <a href="/#about">About</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="tool-page">
+    <div class="wrap contact-wrap">
+      <h1>Contact Us</h1>
+      <p class="tagline">Questions, feedback, or an idea for the next tool on the shelf? Reach us at <a href="mailto:info@yeoldtavernkeeper.com">info@yeoldtavernkeeper.com</a>.</p>
+
+      <form id="toolRequestForm" class="contact-form">
+        <h2>Request a New Tool</h2>
+
+        <label for="reqName">Name</label>
+        <input type="text" id="reqName" name="name" required>
+
+        <label for="reqEmail">Email</label>
+        <input type="email" id="reqEmail" name="email" required>
+
+        <label for="reqTool">What tool would you like to see?</label>
+        <textarea id="reqTool" name="tool" rows="6" required placeholder="Describe the tool and what problem it solves at the table..."></textarea>
+
+        <button type="submit" class="btn btn-primary">Send Request</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; <span id="year"></span> Ye Old Tavernkeeper. May your rolls be ever in your favor.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  document.getElementById('toolRequestForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('reqName').value;
+    const email = document.getElementById('reqEmail').value;
+    const tool = document.getElementById('reqTool').value;
+
+    const subject = encodeURIComponent('New Tool Request from ' + name);
+    const body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n\n' +
+      'Tool idea:\n' + tool
+    );
+
+    window.location.href = 'mailto:info@yeoldtavernkeeper.com?subject=' + subject + '&body=' + body;
+  });
+</script>
+</body>
+</html>
