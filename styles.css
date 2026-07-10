@@ -1,0 +1,218 @@
+:root {
+  --wood-dark: #2b1a12;
+  --wood: #3f2a1c;
+  --wood-light: #5a3d28;
+  --parchment: #f3e3c3;
+  --parchment-dim: #e2cfa3;
+  --ember: #c8752b;
+  --ember-bright: #e08e3e;
+  --ink: #2a1d14;
+  --shadow: rgba(0, 0, 0, 0.35);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background: var(--wood-dark);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.03), transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(255, 255, 255, 0.02), transparent 45%);
+  color: var(--parchment);
+  line-height: 1.6;
+}
+
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+a {
+  color: var(--ember-bright);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3 {
+  font-family: 'Trebuchet MS', Georgia, serif;
+  color: var(--parchment);
+  margin-top: 0;
+}
+
+/* Header */
+.site-header {
+  background: var(--wood);
+  border-bottom: 3px solid var(--ember);
+  box-shadow: 0 2px 12px var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--parchment);
+}
+.brand:hover { text-decoration: none; }
+.brand-icon { font-size: 1.5rem; }
+
+.site-nav a {
+  margin-left: 24px;
+  color: var(--parchment-dim);
+  font-weight: bold;
+}
+.site-nav a:hover { color: var(--ember-bright); }
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 90px 0 70px;
+  background: linear-gradient(180deg, var(--wood) 0%, var(--wood-dark) 100%);
+  border-bottom: 1px solid rgba(200, 117, 43, 0.3);
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 4px var(--shadow);
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: var(--parchment-dim);
+  max-width: 520px;
+  margin: 0 auto 32px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-family: 'Trebuchet MS', Georgia, serif;
+}
+.btn:hover { text-decoration: none; }
+
+.btn-primary {
+  background: var(--ember);
+  color: var(--ink);
+  box-shadow: 0 3px 0 #8f4f18;
+}
+.btn-primary:hover { background: var(--ember-bright); }
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--ember);
+  color: var(--ember-bright);
+  padding: 10px 20px;
+}
+.btn-secondary:hover {
+  background: var(--ember);
+  color: var(--ink);
+}
+
+/* Tools */
+.tools {
+  padding: 70px 0;
+}
+
+.tools h2, .about h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.tool-card {
+  background: var(--wood);
+  border: 1px solid rgba(200, 117, 43, 0.25);
+  border-radius: 10px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: 0 4px 14px var(--shadow);
+}
+
+.tool-card--soon {
+  opacity: 0.75;
+  border-style: dashed;
+}
+
+.tool-icon {
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+}
+
+.tool-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.tool-card p {
+  color: var(--parchment-dim);
+  margin-bottom: 20px;
+  min-height: 66px;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(200, 117, 43, 0.2);
+  color: var(--ember-bright);
+  border: 1px solid var(--ember);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* About */
+.about {
+  background: var(--wood);
+  padding: 60px 0;
+  border-top: 1px solid rgba(200, 117, 43, 0.25);
+  border-bottom: 3px solid var(--ember);
+}
+.about p {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--parchment-dim);
+}
+
+/* Footer */
+.site-footer {
+  padding: 28px 0;
+  text-align: center;
+  color: var(--parchment-dim);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2.1rem; }
+  .header-inner { flex-direction: column; gap: 10px; }
+  .site-nav a { margin: 0 12px; }
+}

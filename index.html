@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ye Old Tavernkeeper — RPG Tools & Sundries</title>
+<meta name="description" content="Home of ScribeMaster and other tools for tabletop RPG game masters and players.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍺</text></svg>">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="/" class="brand">
+      <span class="brand-icon" aria-hidden="true">🍺</span>
+      <span class="brand-text">Ye Old Tavernkeeper</span>
+    </a>
+    <nav class="site-nav">
+      <a href="#tools">Tools</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Pull up a stool.</h1>
+      <p class="tagline">A tavern for game masters — tools, tales, and tankards for your tabletop adventures.</p>
+      <a href="#tools" class="btn btn-primary">See the Tools</a>
+    </div>
+  </section>
+
+  <section id="tools" class="tools">
+    <div class="wrap">
+      <h2>Wares on the Shelf</h2>
+      <div class="tool-grid">
+
+        <article class="tool-card tool-card--live">
+          <div class="tool-icon" aria-hidden="true">📜</div>
+          <h3>ScribeMaster</h3>
+          <p>Your quill-and-ink companion for keeping campaign notes, NPCs, and session logs in order — so the story never gets lost.</p>
+          <a href="https://scribemaster.yeoldtavernkeeper.com" class="btn btn-secondary">Visit ScribeMaster &rarr;</a>
+        </article>
+
+        <article class="tool-card tool-card--soon">
+          <div class="tool-icon" aria-hidden="true">🎲</div>
+          <h3>More Brewing&hellip;</h3>
+          <p>New tools are aging in the cellar. Check back soon for the next round.</p>
+          <span class="badge">Coming Soon</span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="wrap">
+      <h2>About the House</h2>
+      <p>Ye Old Tavernkeeper is home base for a growing family of tools built for tabletop RPG game masters and players. Each tool is its own room in the tavern — pull up a chair, grab a mug, and get back to the game.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; <span id="year"></span> Ye Old Tavernkeeper. May your rolls be ever in your favor.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
