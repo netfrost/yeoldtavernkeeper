@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tavern Tables — Ye Old Tavernkeeper</title>
+<meta name="description" content="Roll instant tavern names, NPC names, and insults across five settings.">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <img class="header-run" src="images/running-cropped.png" alt="An adventuring party running">
+  <div class="wrap header-inner">
+    <a href="/" class="brand">
+      <img class="brand-icon" src="images/tk-logo-cropped.png" alt="Ye Old Tavernkeeper logo">
+      <span class="brand-text">Ye Old Tavernkeeper</span>
+    </a>
+    <nav class="site-nav">
+      <a href="/#tools">Tools</a>
+      <a href="/#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="tool-page">
+    <div class="wrap">
+      <h1>Tavern Tables</h1>
+      <p class="tagline">Pick a category and a theme, then roll the table.</p>
+
+      <div class="generator-controls">
+        <select id="categorySelect" aria-label="Category">
+          <option value="tavern">Tavern Names</option>
+          <option value="npc">NPC Names</option>
+          <option value="insult">Random Insults</option>
+        </select>
+        <select id="themeSelect" aria-label="Theme">
+          <option value="fantasy">Fantasy</option>
+          <option value="scifi">Sci-fi</option>
+          <option value="cyberpunk">Cyberpunk</option>
+          <option value="modern">Modern</option>
+          <option value="pirate">Pirate</option>
+        </select>
+        <button id="generateBtn" class="btn btn-primary">Roll the Table</button>
+      </div>
+
+      <ul id="resultsList" class="generator-results"></ul>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; <span id="year"></span> Ye Old Tavernkeeper. May your rolls be ever in your favor.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const DATA = {
+    fantasy: {
+      tavernAdj: ["Prancing","Drunken","Golden","Silver","Laughing","Weary","Wandering","Crooked","Sleeping","Roaring"],
+      tavernNoun: ["Gryphon","Dragon","Unicorn","Wizard","Boar","Stag","Minstrel","Kraken","Phoenix","Goblin"],
+      npcFirst: ["Brom","Elenya","Torvin","Sable","Kael","Miriel","Dorn","Ysolde","Garrick","Nissa"],
+      npcLast: ["Ironfoot","Stormwind","Oakenshield","Nightwhisper","Fireforge","Brightblade","Hollowmere","Ravensworth","Thistledown","Duskbane"],
+      insultAdj: ["mangy","addlepated","cross-eyed","flea-bitten","gutless","witless","slack-jawed","yellow-bellied"],
+      insultNoun: ["goblin","kobold","peasant","rat catcher","stable boy","half-orc runt","toad-licker","hedge wizard"],
+      insultTemplates: ["You %adj% %noun%!","By the gods, you're a %adj% %noun%.","Begone, %adj% %noun%!","I've fought smarter %noun%s than you."]
+    },
+    scifi: {
+      tavernAdj: ["Rusty","Glowing","Derelict","Chrome","Void-Touched","Static","Orbiting","Fractured","Neon","Hollow"],
+      tavernNoun: ["Nebula","Airlock","Reactor","Comet","Station","Asteroid","Stardrive","Pulsar","Hyperlane","Satellite"],
+      npcFirst: ["Zeta","Orion","Vex","Nyra","Kolt","Isabex","Ryn","Thessaly","Draven","Quill"],
+      npcLast: ["Voss","Kryll","Halyard","Ironstar","Vantage","Sundrel","Marrow","Ashcroft","Vireo","Solane"],
+      insultAdj: ["glitch-brained","low-orbit","short-circuited","freeze-dried","radiation-addled","malfunctioning"],
+      insultNoun: ["space barnacle","protocol droid","escape pod","airlock rat","cargo slug","dead battery"],
+      insultTemplates: ["You %adj% %noun%!","Warning: %adj% %noun% detected.","Get out of my sightline, %adj% %noun%.","Even a broken droid outsmarts a %noun% like you."]
+    },
+    cyberpunk: {
+      tavernAdj: ["Neon","Chrome","Fried","Static","Black-Market","Glitched","Midnight","Overclocked","Wired","Flatlined"],
+      tavernNoun: ["Circuit","Datastream","Backalley","Netrunner","Syndicate","Uplink","Firewall","Blackout","Overdrive","Sprawl"],
+      npcFirst: ["Jax","Nyx","Rook","Cipher","Dex","Vex","Ash","Kessi","Byte","Ronin"],
+      npcLast: ["Steelrunner","Voidwire","Blackcode","Ghostline","Neonfall","Ironjack","Killswitch","Datacrash","Nullhand","Wireborn"],
+      insultAdj: ["low-rez","corp-brained","chipped-out","bootleg","zero-day","flatlined"],
+      insultNoun: ["street rat","data leech","corpo bootlicker","glitched pixel","cracked chip","dead pixel"],
+      insultTemplates: ["You %adj% %noun%.","Choom, you're a %adj% %noun%.","Delete yourself, %adj% %noun%.","Even a dead net has more brains than you, %noun%."]
+    },
+    modern: {
+      tavernAdj: ["Rusty","Corner","Local","Midnight","Regular","Roadside","Downtown","Backdoor","Foggy","Lucky"],
+      tavernNoun: ["Tavern","Pub","Dive","Lounge","Tap Room","Saloon","Watering Hole","Speakeasy","Bar & Grill","Alehouse"],
+      npcFirst: ["Mike","Sarah","Dave","Jenny","Chris","Amanda","Tom","Rachel","Kevin","Lisa"],
+      npcLast: ["Johnson","Martinez","Smith","O'Brien","Chen","Anderson","Patel","Nguyen","Walsh","Romano"],
+      insultAdj: ["absolute","total","complete","grade-A","first-class","world-class"],
+      insultNoun: ["muppet","clown","doofus","goober","nincompoop","bonehead"],
+      insultTemplates: ["You %adj% %noun%!","Wow, a real %adj% %noun% right here.","Get outta here, %adj% %noun%.","I've met smarter %noun%s at the DMV."]
+    },
+    pirate: {
+      tavernAdj: ["Salty","Barnacled","One-Eyed","Drunken","Rusty","Rotten","Soggy","Cursed","Squawking","Briny"],
+      tavernNoun: ["Kraken","Anchor","Parrot","Plank","Galleon","Cutlass","Doubloon","Mermaid","Barrel","Tide"],
+      npcFirst: ["Jack","Meg","Pete","Anne","Bill","Morgan","Tom","Isla","Roger","Nell"],
+      npcLast: ["Blackwater","Ironhook","Saltbeard","Deadeye","Bloodrudder","Grimtide","Skullrig","Foulwind","Longknife","Duskjaw"],
+      insultAdj: ["scurvy","bilge-sucking","landlubbing","yellow-bellied","barnacle-brained","cross-eyed"],
+      insultNoun: ["bilge rat","sea slug","landlubber","scallywag","deckhand","parrot's chew toy"],
+      insultTemplates: ["Ye %adj% %noun%!","Walk the plank, ye %adj% %noun%.","Shiver me timbers, a %adj% %noun% be here.","I've seen smarter %noun%s in Davy Jones' locker."]
+    }
+  };
+
+  function pick(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function generateOne(category, bank) {
+    if (category === 'tavern') {
+      return "The " + pick(bank.tavernAdj) + " " + pick(bank.tavernNoun);
+    }
+    if (category === 'npc') {
+      return pick(bank.npcFirst) + " " + pick(bank.npcLast);
+    }
+    const tmpl = pick(bank.insultTemplates);
+    return tmpl
+      .replace(/%adj%/g, pick(bank.insultAdj))
+      .replace(/%noun%/g, pick(bank.insultNoun));
+  }
+
+  function generateList(category, theme, count) {
+    const bank = DATA[theme];
+    const results = new Set();
+    let attempts = 0;
+    while (results.size < count && attempts < count * 25) {
+      results.add(generateOne(category, bank));
+      attempts++;
+    }
+    return Array.from(results);
+  }
+
+  const categorySelect = document.getElementById('categorySelect');
+  const themeSelect = document.getElementById('themeSelect');
+  const resultsList = document.getElementById('resultsList');
+
+  function roll() {
+    const list = generateList(categorySelect.value, themeSelect.value, 10);
+    resultsList.innerHTML = list.map(item => `<li>${item}</li>`).join('');
+  }
+
+  document.getElementById('generateBtn').addEventListener('click', roll);
+  roll();
+</script>
+</body>
+</html>
