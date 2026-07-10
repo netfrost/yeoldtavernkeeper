@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found — Ye Old Tavernkeeper</title>
+<meta name="description" content="This page has wandered off into the woods. Head back to the tavern.">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <img class="header-run" src="images/running-cropped.png" alt="An adventuring party running">
+  <div class="wrap header-inner">
+    <a href="/" class="brand">
+      <img class="brand-icon" src="images/tk-logo-cropped.png" alt="Ye Old Tavernkeeper logo">
+      <span class="brand-text">Ye Old Tavernkeeper</span>
+    </a>
+    <nav class="site-nav">
+      <a href="/#tools">Tools</a>
+      <a href="/#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero not-found">
+    <div class="wrap not-found-inner">
+      <img class="not-found-image" src="images/404.png" alt="A lost adventurer, off the beaten path">
+      <h1>404: Wrong Door</h1>
+      <p class="tagline">Even the tavernkeeper doesn't know where this page went. Let's get you back to the bar.</p>
+      <a href="/" class="btn btn-primary">Back to the Tavern</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; <span id="year"></span> Ye Old Tavernkeeper. May your rolls be ever in your favor.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

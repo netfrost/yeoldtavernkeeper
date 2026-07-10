@@ -153,6 +153,19 @@ h1, h2, h3 {
   .hero-inner { flex-direction: column; }
 }
 
+/* 404 */
+.not-found-inner {
+  text-align: center;
+}
+
+.not-found-image {
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 32px;
+}
+
 .btn {
   display: inline-block;
   padding: 12px 28px;
