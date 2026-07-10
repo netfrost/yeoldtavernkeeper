@@ -162,9 +162,14 @@ h1, h2, h3 {
   border-style: dashed;
 }
 
-.tool-icon {
-  font-size: 2.4rem;
+.tool-crest {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
   margin-bottom: 12px;
+  border-radius: 50%;
+  background: var(--wood-dark);
+  box-shadow: 0 0 0 3px var(--ember), 0 4px 14px var(--shadow);
 }
 
 .tool-card h3 {
