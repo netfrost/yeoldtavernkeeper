@@ -183,10 +183,16 @@ h1, h2, h3 {
 
 .generator-controls {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 36px;
+  margin: 0 auto 36px;
+  max-width: 320px;
+}
+
+.generator-controls select,
+.generator-controls button {
+  width: 100%;
 }
 
 .generator-controls select {
@@ -224,11 +230,45 @@ h1, h2, h3 {
 
 /* Contact page */
 .contact-wrap {
-  max-width: 640px;
+  max-width: 900px;
+}
+
+.contact-intro {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+.contact-text {
+  flex: 1 1 320px;
+}
+
+.contact-intro .contact-text h1,
+.contact-intro .contact-text .tagline {
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.contact-image {
+  flex: 1 1 260px;
+  max-width: 340px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+@media (max-width: 700px) {
+  .contact-intro { flex-direction: column; }
+  .contact-intro .contact-text h1,
+  .contact-intro .contact-text .tagline {
+    text-align: center;
+  }
 }
 
 .contact-wrap .tagline {
-  margin-bottom: 40px;
+  margin-bottom: 0;
 }
 
 .contact-wrap .tagline a {
@@ -239,6 +279,8 @@ h1, h2, h3 {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  max-width: 560px;
+  margin: 0 auto;
   background: var(--wood);
   border: 1px solid rgba(200, 117, 43, 0.3);
   border-radius: 10px;
