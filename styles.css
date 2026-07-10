@@ -85,10 +85,20 @@ h1, h2, h3 {
 
 /* Hero */
 .hero {
-  text-align: center;
-  padding: 90px 0 70px;
+  padding: 70px 0;
   background: linear-gradient(180deg, var(--wood) 0%, var(--wood-dark) 100%);
   border-bottom: 1px solid rgba(200, 117, 43, 0.3);
+}
+
+.hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.hero-text {
+  flex: 1 1 380px;
+  text-align: center;
 }
 
 .hero h1 {
@@ -102,6 +112,19 @@ h1, h2, h3 {
   color: var(--parchment-dim);
   max-width: 520px;
   margin: 0 auto 32px;
+}
+
+.hero-image {
+  flex: 1 1 380px;
+  max-width: 460px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px var(--shadow), 0 0 0 3px var(--ember);
+}
+
+@media (max-width: 780px) {
+  .hero-inner { flex-direction: column; }
 }
 
 .btn {
